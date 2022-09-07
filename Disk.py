@@ -14,7 +14,6 @@ class Disk():
 		self.bounced_disk_img = pygame.image.load_extended('pics/Bounced_Tron_Disk.png').convert_alpha()
 		self.bounced_disk = self.bounced_disk_img.get_rect()
 		self.static_background = Board()
-		
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
 		# self.disk_vector = pygame.Vector2()
 		# self.bounce_counter = 0
@@ -29,7 +28,15 @@ class Disk():
 		# self.vector_left.xy = 0, 300
 		# self.vector_right.xy = 800, 300
 		
-	def disk_appears(self):
+	def disk_start(self):
+		pygame.time.delay(50)
+		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
+		print(self.disk_ingame_pos)
+		self.disk_appears_anim()
+		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
+		#pygame.display.update()
+		
+	def disk_appears_anim(self):
 		# if point < 1:
 		animation_list = []
 		animation_steps = 12
@@ -66,16 +73,6 @@ class Disk():
 	def disk_move(self):
 		self.disk_ingame_pos.x += self.speed_x
 		self.disk_ingame_pos.y += self.speed_y
-		
-		
-		# if self.disk_ingame_pos.right >= SCREEN_WIDTH or self.disk_ingame_pos.left <= 0:
-		# 	self.speed_x *= -1
-		# 	self.disk_after_bounc()
-		#
-		# if self.disk_ingame_pos.bottom >= SCREEN_HIGHT or self.disk_ingame_pos.top <= 0:
-		# 	self.speed_y *= -1
-		# 	self.disk_after_bounc()
-		
 		self.static_background.board_static()
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(3)

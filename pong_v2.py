@@ -28,9 +28,11 @@ filldboard = FillBoard()
 
 def start_game():
 	background.board_appearance()  # it should be run only once at start and every time when point is hit
-	disk.disk_appears()
+	#disk.disk_appears_anim()
+	disk.disk_start()
 
 start_game()
+
 
 while True:
 	
@@ -45,9 +47,13 @@ while True:
 	
 	if disk.disk_ingame_pos.right >= SCREEN_WIDTH:
 		filldboard.fill_board("right")
+		disk.disk_start()
+		pygame.time.delay(50)
 		
 	if disk.disk_ingame_pos.left <= 0:
 		filldboard.fill_board("left")
+		disk.disk_start()
+		pygame.time.delay(50)
 	
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:

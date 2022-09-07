@@ -11,7 +11,6 @@ class Board:
 		half_background_size = pygame.Rect(0, 0, SCREEN_HALF_WIDTH, SCREEN_HIGHT)  # image size is 400x600
 		self.board_move(half_background_size)
 
-		
 	def board_move(self, background_size):
 		positions = []
 		for p in range(-SCREEN_HALF_HIGHT, SCREEN_HALF_HIGHT):
@@ -48,6 +47,7 @@ class FillBoard:
 			screen.blit(self.bg_img_left_fill, (0, 0))  # left half of background move by left top corner
 		else:
 			screen.blit(self.bg_img_right_fill, (400, 0))  # right half of background move by right top corner
-		pygame.display.update()  # update display every frame
 		
+		pygame.display.update()  # update display every frame
+
 	
