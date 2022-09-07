@@ -29,11 +29,14 @@ class Disk():
 		# self.vector_right.xy = 800, 300
 		
 	def disk_start(self):
-		pygame.time.delay(50)
+		#self.static_background.board_static()
+		# pygame.time.delay(50)
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
-		print(self.disk_ingame_pos)
 		self.disk_appears_anim()
+		self.speed_x *= random.choice((1, -1))
+		self.speed_y *= random.choice((1, -1))
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
+		pygame.time.delay(250)
 		#pygame.display.update()
 		
 	def disk_appears_anim(self):

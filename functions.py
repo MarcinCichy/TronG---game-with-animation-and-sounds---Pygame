@@ -19,3 +19,7 @@ def disk_bounc():
 	
 	if Disk.disk_ingame_pos.left <= 0:
 		Board.fill_board("left")
+		
+def start_game():
+	background.board_appearance()  # it should be run only once at start and every time when point is hit
+	disk.disk_start()

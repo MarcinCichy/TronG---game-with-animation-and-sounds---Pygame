@@ -28,7 +28,6 @@ filldboard = FillBoard()
 
 def start_game():
 	background.board_appearance()  # it should be run only once at start and every time when point is hit
-	#disk.disk_appears_anim()
 	disk.disk_start()
 
 start_game()
@@ -40,21 +39,26 @@ while True:
 			left_paddle.paddle_left_pos):
 		disk.speed_x *= -1
 		disk.disk_after_bounc()
-	
+
 	if disk.disk_ingame_pos.bottom >= SCREEN_HIGHT or disk.disk_ingame_pos.top <= 0:
 		disk.speed_y *= -1
 		disk.disk_after_bounc()
-	
+	# -----------------------------------------------------------------------------------------------------
 	if disk.disk_ingame_pos.right >= SCREEN_WIDTH:
 		filldboard.fill_board("right")
+		background.board_static()  # -> check it
+		pygame.time.delay(650)
+		
 		disk.disk_start()
-		pygame.time.delay(50)
+		#pygame.time.delay(50)
 		
 	if disk.disk_ingame_pos.left <= 0:
 		filldboard.fill_board("left")
+		background.board_static()  # -> check it
+		pygame.time.delay(650)
 		disk.disk_start()
-		pygame.time.delay(50)
-	
+		#pygame.time.delay(50)
+	# -----------------------------------------------------------------------------------------------------
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
