@@ -1,0 +1,35 @@
+from Constants import *
+from Board import Board
+
+
+class Paddle:
+	def __init__(self, name):
+		self.name = name
+		self.paddle_left_img = pygame.image.load_extended('pics/Left_Paddle_Alpha.png').convert_alpha()
+		self.paddle_left_pos = self.paddle_left_img.get_rect()
+		self.paddle_left_pos.center = (SCREEN_WIDTH-SCREEN_WIDTH+15, SCREEN_HALF_HIGHT)
+		self.paddle_right_img = pygame.image.load_extended('pics/Right_Paddle_Alpha.png').convert_alpha()
+		self.paddle_right_pos = self.paddle_right_img.get_rect()
+		self.paddle_right_pos.center = (SCREEN_WIDTH-15, SCREEN_HALF_HIGHT)
+		self.paddle_left_pos.center = (SCREEN_WIDTH - SCREEN_WIDTH + 15, SCREEN_HALF_HIGHT)
+		self.paddle_right_pos.center = (SCREEN_WIDTH - 15, SCREEN_HALF_HIGHT)
+	
+	def show_paddles(self):
+		if self.name == "lewa":
+			screen.blit(self.paddle_left_img, self.paddle_left_pos)
+		elif self.name == "prawa":
+			screen.blit(self.paddle_right_img, self.paddle_right_pos)
+
+	def paddle_move(self, speed):
+		self.paddle_right_pos.y += speed
+		if self.paddle_right_pos.top <= 0:
+			self.paddle_right_pos.top = 0
+		if self.paddle_right_pos.bottom >= SCREEN_HIGHT:
+			self.paddle_right_pos.bottom = SCREEN_HIGHT
+		
+		self.paddle_left_pos.y += speed
+		if self.paddle_left_pos.top <= 0:
+			self.paddle_left_pos.top = 0
+		if self.paddle_left_pos.bottom >= SCREEN_HIGHT:
+			self.paddle_left_pos.bottom = SCREEN_HIGHT
+			
