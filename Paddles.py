@@ -1,5 +1,4 @@
 from Constants import *
-from Board import Board
 
 
 class Paddle:

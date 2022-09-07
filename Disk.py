@@ -1,5 +1,3 @@
-from pygame import math
-
 import spritesheet
 from Board import Board
 from Constants import *
@@ -48,7 +46,7 @@ class Disk():
 			pygame.display.update()
 			pygame.time.delay(80)
 		self.static_background.board_static()
-		return
+
 		#pygame.time.delay(200)
 		
 		# print(self.frame)
