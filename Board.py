@@ -23,7 +23,6 @@ class Board:
 				positions.append(right_image_position)
 		
 		for background_position in positions:
-			# print(image_position[0])
 			if background_position[0] <= 0:
 				screen.blit(self.bg_img_left, background_position)  # left half of background move by left top corner
 			else:
@@ -37,13 +36,13 @@ class Board:
 		screen.blit(self.bg_img_right, (401, 0))
 	
 	
-class FillBoard():
+class FillBoard:
 	def __init__(self):
 		self.bg_img_left_fill = pygame.image.load('pics/bkg_left_fill_alpha.png').convert_alpha()
 		self.bg_img_right_fill = pygame.image.load('pics/bkg_right_fill_alpha.png').convert_alpha()
 		
 	def fill_board(self, side):
-		if side == "left":
+		if side == "board_left":
 			screen.blit(self.bg_img_left_fill, (0, 0))  # left half of background move by left top corner
 		else:
 			screen.blit(self.bg_img_right_fill, (400, 0))  # right half of background move by right top corner

@@ -14,9 +14,9 @@ class Paddle:
 		self.paddle_right_pos.center = (SCREEN_WIDTH - 15, SCREEN_HALF_HIGHT)
 	
 	def show_paddles(self):
-		if self.name == "lewa":
+		if self.name == "left":
 			screen.blit(self.paddle_left_img, self.paddle_left_pos)
-		elif self.name == "prawa":
+		elif self.name == "right":
 			screen.blit(self.paddle_right_img, self.paddle_right_pos)
 
 	def paddle_move(self, speed):
