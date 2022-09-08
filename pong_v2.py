@@ -1,11 +1,7 @@
 """ Exam at mentoring program "Za rączkę"
 			Game "PONG"
 										"""
-# import random
-# import time
-#
-# import pygame
-# import spritesheet
+
 import functions
 from Paddles import Paddle
 from Board import *
