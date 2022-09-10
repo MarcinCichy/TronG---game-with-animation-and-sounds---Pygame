@@ -25,12 +25,10 @@ fillboard = FillBoard()
 functions.start_game()
 
 while True:
-	# game logic
+	# ----------------------------- game logic -----------------------------
 	# check collision with paddles and
 	# change the direction of the disc depending on the direction of the paddle
 	if disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos) or disk.disk_ingame_pos.colliderect(left_paddle.paddle_left_pos):
-		DISK_SPEED_X += 6
-		DISK_SPEED_Y += 6
 		if (PADDLE_SPEED_RIGHT == 10 and disk.speed_y > 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y > 0):
 			disk.speed_x *= -1
 		elif (PADDLE_SPEED_RIGHT == 10 and disk.speed_y < 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y < 0):
@@ -46,8 +44,6 @@ while True:
 
 	# Check collision with top and bottom of board
 	if disk.disk_ingame_pos.bottom >= SCREEN_HIGHT or disk.disk_ingame_pos.top <= 0:
-		# DISK_SPEED_X -= 6
-		# DISK_SPEED_Y -= 6
 		disk.speed_y *= -1
 		disk.disk_after_bounc()
 	
@@ -65,7 +61,7 @@ while True:
 
 	#functions.disk_moving()
 
-	# pygame events to control game and paddles
+	# ---------- pygame events to control game and paddles  ----------
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
@@ -93,7 +89,7 @@ while True:
 			if event.key == pygame.K_a:
 				PADDLE_SPEED_LEFT += 10
 	print(disk.speed_x, disk.speed_y)
-	print(DISK_SPEED_X, DISK_SPEED_Y)
+	print("DS:", DISK_SPEED_X, DISK_SPEED_Y)
 	disk.disk_move()
 	left_paddle.show_paddles()
 	right_paddle.show_paddles()

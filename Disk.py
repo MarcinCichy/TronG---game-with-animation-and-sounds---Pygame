@@ -4,9 +4,9 @@ from Constants import *
 
 
 class Disk:
-	def __init__(self, speed_x=DISK_SPEED_X, speed_y=DISK_SPEED_Y):
-		self.speed_x = speed_x
-		self.speed_y = speed_y
+	def __init__(self):
+		self.speed_x = DISK_SPEED_X
+		self.speed_y = DISK_SPEED_Y
 		self.disk_appears_img = pygame.image.load_extended('pics/Disk_appeared.png').convert_alpha()
 		self.sprite_sheet = spritesheet.SpriteSheet(self.disk_appears_img)
 		self.disk_ingame_img = pygame.image.load_extended('pics/Tron_Disk.png').convert_alpha()
