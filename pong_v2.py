@@ -26,18 +26,33 @@ functions.start_game()
 
 while True:
 	# game logic
-	# check collision with paddles
-	if disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos) or disk.disk_ingame_pos.colliderect(
-			left_paddle.paddle_left_pos):
-		disk.speed_x *= -1
+	# check collision with paddles and
+	# change the direction of the disc depending on the direction of the paddle
+	if disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos) or disk.disk_ingame_pos.colliderect(left_paddle.paddle_left_pos):
+		DISK_SPEED_X += 6
+		DISK_SPEED_Y += 6
+		if (PADDLE_SPEED_RIGHT == 10 and disk.speed_y > 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y > 0):
+			disk.speed_x *= -1
+		elif (PADDLE_SPEED_RIGHT == 10 and disk.speed_y < 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y < 0):
+			disk.speed_x *= -1
+			disk.speed_y *= -1
+		if (PADDLE_SPEED_RIGHT == -10 and disk.speed_y < 0) or (PADDLE_SPEED_LEFT == -10 and disk.speed_y < 0):
+			disk.speed_x *= -1
+		elif (PADDLE_SPEED_RIGHT == -10 and disk.speed_y > 0) or (PADDLE_SPEED_LEFT == -10 and disk.speed_y > 0):
+			disk.speed_x *= -1
+			disk.speed_y *= -1
 		disk.disk_after_bounc()
+	
 
-	# check collision with top and bottom of board
+	# Check collision with top and bottom of board
 	if disk.disk_ingame_pos.bottom >= SCREEN_HIGHT or disk.disk_ingame_pos.top <= 0:
+		# DISK_SPEED_X -= 6
+		# DISK_SPEED_Y -= 6
 		disk.speed_y *= -1
 		disk.disk_after_bounc()
-
-	# check if the disk has reached its target
+	
+	# Check if the disk has reached its target
+	# and show by filling in half of the board where the player lost a point
 	if disk.disk_ingame_pos.right >= SCREEN_WIDTH or disk.disk_ingame_pos.left <= 0:
 		if disk.disk_ingame_pos.right >= SCREEN_WIDTH:
 			fillboard.fill_board("board_right")
@@ -77,7 +92,8 @@ while True:
 				PADDLE_SPEED_LEFT -= 10
 			if event.key == pygame.K_a:
 				PADDLE_SPEED_LEFT += 10
-
+	print(disk.speed_x, disk.speed_y)
+	print(DISK_SPEED_X, DISK_SPEED_Y)
 	disk.disk_move()
 	left_paddle.show_paddles()
 	right_paddle.show_paddles()
