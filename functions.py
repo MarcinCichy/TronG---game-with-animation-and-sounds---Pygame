@@ -44,28 +44,31 @@ def start_game():
 	new_disk = Disk()
 	new_disk.disk_start()
 	
-# #
-# def read_keys_events():
-# 	for event in pygame.event.get():
-# 		if event.type == pygame.KEYDOWN:
-# 			if event.key == pygame.K_DOWN:
-# 				PADDLE_SPEED_RIGHT += 10
-# 			if event.key == pygame.K_UP:
-# 				PADDLE_SPEED_RIGHT -= 10
-# 		if event.type == pygame.KEYUP:
-# 			if event.key == pygame.K_DOWN:
-# 				PADDLE_SPEED_RIGHT -= 10
-# 			if event.key == pygame.K_UP:
-# 				PADDLE_SPEED_RIGHT += 10
-#
-# 		if event.type == pygame.KEYDOWN:
-# 			if event.key == pygame.K_z:
-# 				PADDLE_SPEED_LEFT += 10
-# 			if event.key == pygame.K_a:
-# 				PADDLE_SPEED_LEFT -= 10
-# 		if event.type == pygame.KEYUP:
-# 			if event.key == pygame.K_z:
-# 				PADDLE_SPEED_LEFT -= 10
-# 			if event.key == pygame.K_a:
-# 				PADDLE_SPEED_LEFT += 10
+def collisons(disk, right_paddle, left_paddle):
+	print(f'Start disk_speed={disk.speed_x}')
+	# if disk.speed_x > DISK_SPEED_X or disk.speed_y > DISK_SPEED_Y:
+	# 	disk.speed_x -= ACCELERATION
+	# 	disk.speed_y -= ACCELERATION
+	if disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos) or disk.disk_ingame_pos.colliderect(
+			left_paddle.paddle_left_pos):
+		# disk.speed_x += ACCELERATION
+		# disk.speed_y += ACCELERATION
+		if (PADDLE_SPEED_RIGHT == 10 and disk.speed_y > 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y > 0):
+			disk.speed_x *= -1
+		elif (PADDLE_SPEED_RIGHT == 10 and disk.speed_y < 0) or (PADDLE_SPEED_LEFT == 10 and disk.speed_y < 0):
+			disk.speed_x *= -1
+			disk.speed_y *= -1
+		elif (PADDLE_SPEED_RIGHT == -10 and disk.speed_y < 0) or (PADDLE_SPEED_LEFT == -10 and disk.speed_y < 0):
+			disk.speed_x *= -1
+		elif (PADDLE_SPEED_RIGHT == -10 and disk.speed_y > 0) or (PADDLE_SPEED_LEFT == -10 and disk.speed_y > 0):
+			disk.speed_x *= -1
+			disk.speed_y *= -1
+		elif (PADDLE_SPEED_RIGHT == 0) or (PADDLE_SPEED_LEFT == 0):
+			disk.speed_x *= -1
+		disk.disk_after_bounc()
+		print(f'End disk_speed={disk.speed_x}')
+	# Check collision with top and bottom of board
+	if disk.disk_ingame_pos.bottom >= SCREEN_HIGHT or disk.disk_ingame_pos.top <= 0:
+		disk.speed_y *= -1
 	
+		disk.disk_after_bounc()
