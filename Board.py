@@ -5,6 +5,8 @@ class Board:
 	def __init__(self):
 		self.bg_img_left = pygame.image.load('pics/bkg_left_wo_fill.png').convert()
 		self.bg_img_right = pygame.image.load('pics/bkg_right_wo_fill.png').convert()
+		self.bg_img_left_fill = pygame.image.load('pics/bkg_left_fill_alpha.png').convert_alpha()
+		self.bg_img_right_fill = pygame.image.load('pics/bkg_right_fill_alpha.png').convert_alpha()
 	
 	def board_appearance(self):
 		pygame.draw.line(screen, MIDDLE_LINE_COLOR, (SCREEN_HALF_WIDTH, 0), (SCREEN_HALF_WIDTH, SCREEN_HIGHT), width=3)  # middle line
@@ -34,12 +36,6 @@ class Board:
 		pygame.draw.line(screen, MIDDLE_LINE_COLOR, (SCREEN_HALF_WIDTH, 0), (SCREEN_HALF_WIDTH, SCREEN_HIGHT), width=3)  # middle line
 		screen.blit(self.bg_img_left, (0, 0))
 		screen.blit(self.bg_img_right, (401, 0))
-	
-	
-class FillBoard:
-	def __init__(self):
-		self.bg_img_left_fill = pygame.image.load('pics/bkg_left_fill_alpha.png').convert_alpha()
-		self.bg_img_right_fill = pygame.image.load('pics/bkg_right_fill_alpha.png').convert_alpha()
 		
 	def fill_board(self, side):
 		if side == "board_left":

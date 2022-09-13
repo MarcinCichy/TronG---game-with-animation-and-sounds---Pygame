@@ -1,3 +1,4 @@
+from random import *
 import spritesheet
 from Board import Board
 from Constants import *

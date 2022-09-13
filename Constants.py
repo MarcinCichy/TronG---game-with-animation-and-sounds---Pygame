@@ -6,11 +6,11 @@ SCREEN_WIDTH = 800
 SCREEN_HALF_HIGHT = int(SCREEN_HIGHT/2)
 SCREEN_HALF_WIDTH = int(SCREEN_WIDTH/2)
 # --------------------------------------------------
-# DISK_SPEED_X = 3 * random.choice((1, -1))
-# DISK_SPEED_Y = 3 * random.choice((1, -1))
 DISK_SPEED_X = 3
 DISK_SPEED_Y = 3
-ACCELERATION = 5
+ACCELERATION = 3
+RIGHT_PADDLE_STICK_DISK = 0
+LEFT_PADDLE_STICK_DISK = 0
 # --------------------------------------------------
 PADDLE_SPEED_RIGHT = 0
 PADDLE_SPEED_LEFT = 0
