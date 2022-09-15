@@ -1,6 +1,6 @@
 """ Exam at mentoring program "Za rączkę"
 			Game "PONG"
-										"""
+"""
 
 import functions
 from Paddles import Paddle
@@ -11,7 +11,8 @@ from sys import exit
 
 
 pygame.init()
-pygame.display.set_caption('Tron PONG')
+
+pygame.display.set_caption('TronG')
 clock = pygame.time.Clock()
 
 screen.fill(BKG_COLOR)
@@ -21,7 +22,8 @@ disk = Disk()
 left_paddle = Paddle("left")
 right_paddle = Paddle("right")
 
-functions.start_game()
+functions.new_disk()
+
 
 while True:
 	
@@ -68,18 +70,21 @@ while True:
 				LEFT_PADDLE_STICK_DISK = -1
 				
 	# ----------------------------- game logic -----------------------------
-	
-	functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK)
-	functions.lost_point(disk, background)
 
+	functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK)
+	
 	disk.disk_move()
 	left_paddle.show_paddles()
 	right_paddle.show_paddles()
 	right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 	left_paddle.paddle_move(PADDLE_SPEED_LEFT)
-
+	
+	functions.lost_point(disk, background)
+	
 	pygame.display.update()
 	clock.tick(60)
+
+
 
 	
 	

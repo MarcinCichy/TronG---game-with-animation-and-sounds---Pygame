@@ -1,5 +1,5 @@
 import pygame
-import random
+pygame.font.init()
 
 SCREEN_HIGHT = 600
 SCREEN_WIDTH = 800
@@ -14,6 +14,9 @@ LEFT_PADDLE_STICK_DISK = 0
 # --------------------------------------------------
 PADDLE_SPEED_RIGHT = 0
 PADDLE_SPEED_LEFT = 0
+LEFT_POINTS = 0
+RIGHT_POINTS = 0
+END_GAME_POINTS = 3
 # --------------------------------------------------
 ANIMATION_LIST = []
 ANIMATION_STEPS = 12
@@ -21,3 +24,5 @@ ANIMATION_STEPS = 12
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HIGHT))
 MIDDLE_LINE_COLOR = (0, 0, 0)
 BKG_COLOR = pygame.Color(50, 50, 50)
+FONT_COLOR = pygame.Color(153, 217, 234)
+game_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 80)

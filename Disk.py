@@ -1,4 +1,4 @@
-from random import *
+import random
 import spritesheet
 from Board import Board
 from Constants import *
@@ -20,8 +20,8 @@ class Disk:
 	def disk_start(self):
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
 		self.disk_appears_anim()
-		self.speed_x *= random.choice((1, -1))
-		self.speed_y *= random.choice((1, -1))
+		self.speed_x *= random.choice([1, -1])
+		self.speed_y *= random.choice([1, -1])
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(250)
 		
