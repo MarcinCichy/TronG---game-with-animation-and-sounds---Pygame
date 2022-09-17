@@ -1,5 +1,4 @@
 # from https://github.com/russs123/pygame_tutorials/blob/main/sprite_tutorial/spritesheet.py
-import pygame
 from Constants import *
 
 

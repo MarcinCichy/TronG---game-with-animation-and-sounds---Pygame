@@ -2,12 +2,12 @@
 			Game "PONG"
 """
 
+from sys import exit
 import functions
 from Paddles import Paddle
 from Board import *
 from Disk import Disk
-from Constants import *
-from sys import exit
+from Menu import *
 
 
 pygame.init()
@@ -21,8 +21,9 @@ background = Board()
 disk = Disk()
 left_paddle = Paddle("left")
 right_paddle = Paddle("right")
+menu = Menu()
 
-functions.new_disk()
+functions.show_new_disk()
 
 
 while True:
@@ -70,7 +71,7 @@ while True:
 				LEFT_PADDLE_STICK_DISK = -1
 				
 	# ----------------------------- game logic -----------------------------
-
+	
 	functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK)
 	
 	disk.disk_move()

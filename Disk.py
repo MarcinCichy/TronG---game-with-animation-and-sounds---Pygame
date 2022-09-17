@@ -1,4 +1,3 @@
-import random
 import spritesheet
 from Board import Board
 from Constants import *
@@ -20,8 +19,6 @@ class Disk:
 	def disk_start(self):
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
 		self.disk_appears_anim()
-		self.speed_x *= random.choice([1, -1])
-		self.speed_y *= random.choice([1, -1])
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(250)
 		
@@ -49,7 +46,7 @@ class Disk:
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(3)
 
-	def disk_after_bounc(self):
+	def disk_after_bounce(self):
 		screen.blit(self.bounced_disk_img, self.disk_ingame_pos)
 		pygame.display.update()
 		pygame.time.delay(20)

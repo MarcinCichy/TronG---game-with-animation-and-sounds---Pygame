@@ -16,7 +16,7 @@ PADDLE_SPEED_RIGHT = 0
 PADDLE_SPEED_LEFT = 0
 LEFT_POINTS = 0
 RIGHT_POINTS = 0
-END_GAME_POINTS = 3
+END_GAME_POINTS = 2
 # --------------------------------------------------
 ANIMATION_LIST = []
 ANIMATION_STEPS = 12

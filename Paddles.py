@@ -1,5 +1,4 @@
 from Constants import *
-import spritesheet
 
 
 class Paddle:
