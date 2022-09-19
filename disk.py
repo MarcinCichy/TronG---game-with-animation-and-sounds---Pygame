@@ -1,6 +1,6 @@
 import spritesheet
-from Board import Board
-from Constants import *
+from board import Board
+from constants import *
 
 
 class Disk:

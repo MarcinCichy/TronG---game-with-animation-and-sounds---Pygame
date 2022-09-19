@@ -1,5 +1,5 @@
 # from https://github.com/russs123/pygame_tutorials/blob/main/sprite_tutorial/spritesheet.py
-from Constants import *
+from constants import *
 
 
 class SpriteSheet:

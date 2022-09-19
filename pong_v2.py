@@ -4,9 +4,9 @@
 
 from sys import exit
 import functions
-from Paddles import Paddle
-from Disk import Disk
-from Menu import *
+from paddles import Paddle
+from disk import Disk
+from menu import *
 
 pygame.init()
 
@@ -21,18 +21,18 @@ left_paddle = Paddle("left")
 right_paddle = Paddle("right")
 menu = Menu()
 
-# menu.show_menu()
+menu.show_menu()
+
 functions.show_new_disk()
 
-
-while True:
+game_on = True
+while game_on:
 	
 	# ---------- pygame events to control game and paddles  ----------
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
-			pygame.quit()
-			exit()
-		
+			game_on = False
+			
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_DOWN:
 				PADDLE_SPEED_RIGHT += 10
@@ -85,8 +85,10 @@ while True:
 	
 	pygame.display.update()
 	clock.tick(60)
-
-# menu.show_menu()
 	
+pygame.quit()
+exit()
+# menu.show_menu()
+
 
 	
