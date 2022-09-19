@@ -5,10 +5,8 @@
 from sys import exit
 import functions
 from Paddles import Paddle
-from Board import *
 from Disk import Disk
 from Menu import *
-
 
 pygame.init()
 
@@ -23,6 +21,7 @@ left_paddle = Paddle("left")
 right_paddle = Paddle("right")
 menu = Menu()
 
+# menu.show_menu()
 functions.show_new_disk()
 
 
@@ -71,7 +70,6 @@ while True:
 				LEFT_PADDLE_STICK_DISK = -1
 				
 	# ----------------------------- game logic -----------------------------
-	
 	functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK)
 	
 	disk.disk_move()
@@ -80,12 +78,15 @@ while True:
 	right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 	left_paddle.paddle_move(PADDLE_SPEED_LEFT)
 	
+	# finish = \
 	functions.lost_point(disk, background)
+	# if finish == "exit":
+	# 	break
 	
 	pygame.display.update()
 	clock.tick(60)
 
-
-
+# menu.show_menu()
 	
+
 	

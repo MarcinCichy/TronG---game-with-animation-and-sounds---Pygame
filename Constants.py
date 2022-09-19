@@ -6,9 +6,9 @@ SCREEN_WIDTH = 800
 SCREEN_HALF_HIGHT = int(SCREEN_HIGHT/2)
 SCREEN_HALF_WIDTH = int(SCREEN_WIDTH/2)
 # --------------------------------------------------
-DISK_SPEED_X = 3
-DISK_SPEED_Y = 3
-ACCELERATION = 3
+DISK_SPEED_X = 4
+DISK_SPEED_Y = 4
+ACCELERATION = 2
 RIGHT_PADDLE_STICK_DISK = 0
 LEFT_PADDLE_STICK_DISK = 0
 # --------------------------------------------------
