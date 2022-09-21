@@ -1,5 +1,7 @@
 import pygame
+
 pygame.font.init()
+clock = pygame.time.Clock()
 
 SCREEN_HIGHT = 600
 SCREEN_WIDTH = 800
@@ -26,5 +28,8 @@ MIDDLE_LINE_COLOR = (0, 0, 0)
 BKG_COLOR = pygame.Color(50, 50, 50)
 FONT_COLOR = pygame.Color(153, 217, 234)
 BUTTON_FONT_COLOR = pygame.Color(112, 178, 225)
+# --------------------------------------------------
 game_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 80)
 button_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 25)
+
+MOVE_MENU = 270

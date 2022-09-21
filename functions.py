@@ -1,7 +1,7 @@
 import random
 from disk import Disk
 from menu import *
-
+from constants import *
 
 left_points = LEFT_POINTS
 right_points = RIGHT_POINTS
@@ -92,7 +92,7 @@ def lost_point(disk, background):
 			end_game(background)
 			left_points = 0
 			right_points = 0
-			return "exit"
+			return "exit"  #  ???
 		else:
 			pygame.time.delay(800)
 			show_new_disk()
@@ -116,23 +116,4 @@ def end_game(backgr):
 	menu.show_menu()
 		
 
-def select_from_menu():
-	move_menu_down = 0
-	move_menu_up = 0
-	for event in pygame.event.get():
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_DOWN:
-				move_menu_down += 80
-			if event.key == pygame.K_UP:
-				move_menu_up -= 80
-	select_button = button_font.render(">             <", False, FONT_COLOR)
-	screen.blit(select_button, (320, 270))
-	# pygame.display.update()
-		
-	
-		# if event.type == pygame.KEYUP:
-		# 	if event.key == pygame.K_DOWN:
-		# 		PADDLE_SPEED_RIGHT -= 10
-		# 	if event.key == pygame.K_UP:
-		# 		PADDLE_SPEED_RIGHT += 10
-		#
+
