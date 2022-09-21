@@ -86,10 +86,10 @@ class Menu:
 			exit()
 		colide = pygame.Rect.colliderect(x[0], button_1pl.button_pos)
 		if colide and x[1] == "K_RETURN":
-			print('1 PLAYER')
+			main_game.main_game(1)
 		colide = pygame.Rect.colliderect(x[0], button_2pl.button_pos)
 		if colide and x[1] == "K_RETURN":
-			main_game.main_game()
+			main_game.main_game(2)
 		colide = pygame.Rect.colliderect(x[0], button_opt.button_pos)
 		if colide and x[1] == "K_RETURN":
 			print('OPTIONS')

@@ -35,6 +35,28 @@ class Paddle:
 			self.paddle_left_pos.top = 0
 		if self.paddle_left_pos.bottom >= SCREEN_HIGHT:
 			self.paddle_left_pos.bottom = SCREEN_HIGHT
+	
+	def computer_paddle_move(self, disk, comp_speed):
+		#self.paddle_left_pos.y += comp_speed
+		if self.paddle_left_pos.top < disk.disk_ingame_pos.y:
+			self.paddle_left_pos.top += comp_speed
+		if self.paddle_left_pos.bottom > disk.disk_ingame_pos.y:
+			self.paddle_left_pos.bottom -= comp_speed
+		if self.paddle_left_pos.top <= 0:
+			self.paddle_left_pos.top = 0
+		if self.paddle_left_pos.bottom >= SCREEN_HIGHT:
+			self.paddle_left_pos.bottom = SCREEN_HIGHT
+		
+		
+		
+		# if computer.top < ball.y:
+		# 	computer.top += COMPUTER_SPEED
+		# if computer.bottom > ball.y:
+		# 	computer.bottom -= COMPUTER_SPEED
+		# if computer.top <= 0:
+		# 	computer.top = 0
+		# if computer.bottom >= HIGHT:
+		# 	computer.bottom = HIGHT
 			
 	# def paddle_lost_point(self):
 	# 	spritesheet.sprite_animation(4, 20, 120, 1, 'black', 100, 200)

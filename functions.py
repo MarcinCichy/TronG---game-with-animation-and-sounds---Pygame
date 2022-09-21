@@ -92,7 +92,7 @@ def lost_point(disk, background):
 			end_game(background)
 			left_points = 0
 			right_points = 0
-			return "exit"  #  ???
+			#return "exit"  #  ???
 		else:
 			pygame.time.delay(800)
 			show_new_disk()

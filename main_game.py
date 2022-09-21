@@ -16,7 +16,7 @@ right_paddle = Paddle("right")
 menu = menu.Menu()
 
 
-def main_game():
+def main_game(num_players):
 	global PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK
 	game_on = True
 	while game_on:
@@ -43,24 +43,30 @@ def main_game():
 			if event.type == pygame.KEYUP:
 				if event.key == pygame.K_RALT:
 					RIGHT_PADDLE_STICK_DISK = -1
-			
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_z:
-					PADDLE_SPEED_LEFT += 10
-				if event.key == pygame.K_a:
-					PADDLE_SPEED_LEFT -= 10
-			if event.type == pygame.KEYUP:
-				if event.key == pygame.K_z:
-					PADDLE_SPEED_LEFT -= 10
-				if event.key == pygame.K_a:
-					PADDLE_SPEED_LEFT += 10
-			
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_LALT:
-					LEFT_PADDLE_STICK_DISK = 1
-			if event.type == pygame.KEYUP:
-				if event.key == pygame.K_LALT:
-					LEFT_PADDLE_STICK_DISK = -1
+					
+		#  below used for two persons
+			if num_players == 2:
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_z:
+						PADDLE_SPEED_LEFT += 10
+					if event.key == pygame.K_a:
+						PADDLE_SPEED_LEFT -= 10
+				if event.type == pygame.KEYUP:
+					if event.key == pygame.K_z:
+						PADDLE_SPEED_LEFT -= 10
+					if event.key == pygame.K_a:
+						PADDLE_SPEED_LEFT += 10
+				
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_LALT:
+						LEFT_PADDLE_STICK_DISK = 1
+				if event.type == pygame.KEYUP:
+					if event.key == pygame.K_LALT:
+						LEFT_PADDLE_STICK_DISK = -1
+			# elif num_players == 1:
+			# 	print("ONE PLAYERS")
+				
+				
 		
 		# ----------------------------- game logic -----------------------------
 		functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK,
@@ -69,9 +75,12 @@ def main_game():
 		disk.disk_move()
 		left_paddle.show_paddles()
 		right_paddle.show_paddles()
-		right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
-		left_paddle.paddle_move(PADDLE_SPEED_LEFT)
-		
+		if num_players == 2:
+			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
+			left_paddle.paddle_move(PADDLE_SPEED_LEFT)
+		elif num_players == 1:
+			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
+			left_paddle.computer_paddle_move(disk, COMPUTER_PADDLE_SPEED)
 		functions.lost_point(disk, background)
 		
 		pygame.display.update()
