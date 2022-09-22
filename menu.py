@@ -1,10 +1,10 @@
 import pygame.image
-
-import functions
 import main_game
+from sys import exit
 from constants import *
 from board import Board
 from buttons import Button
+from options import Options
 
 # set buttons in menu
 button_1pl_img = pygame.image.load('pics/emty_button_1.png').convert_alpha()
@@ -26,9 +26,10 @@ class Menu:
 		self.menu_size.midtop = (400, 240)
 		self.menu_pos = self.menu_size
 		self.static_background = Board()
+		self.options = Options()
+		self.move_arrows = MOVE_POINTER
 	
 	def show_menu(self):
-		buttons_list = []
 		menu_on = True
 		while menu_on:
 			for event in pygame.event.get():
@@ -47,49 +48,49 @@ class Menu:
 			move_arrows = self.switch_between_buttons()
 			self.select_button(move_arrows)
 			pygame.display.update()
-		
-		pygame.quit()
-		exit()
+
 		
 	def switch_between_buttons(self):
 		key = None
-		global MOVE_MENU
 		start_pos_y = 270
 		end_pos_y = 450
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_DOWN:
-					MOVE_MENU += 60
+					self.move_arrows += 60
 				if event.key == pygame.K_UP:
-					MOVE_MENU -= 60
+					self.move_arrows -= 60
 				if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
 					key = "K_RETURN"
-		
+					
 		select_arrows = button_font.render(">             <", False, FONT_COLOR)
 		select_arrows_pos = select_arrows.get_rect()
 		select_arrows_pos.topleft = (320, select_arrows_pos.y)
-		select_arrows_pos.y += MOVE_MENU
+		select_arrows_pos.y += self.move_arrows
 		if select_arrows_pos.y < start_pos_y:
 			select_arrows_pos.y = end_pos_y
-			MOVE_MENU = end_pos_y
+			self.move_arrows = end_pos_y
 		elif select_arrows_pos.y > end_pos_y:
 			select_arrows_pos.y = start_pos_y
-			MOVE_MENU = start_pos_y
+			self.move_arrows = start_pos_y
 		
 		screen.blit(select_arrows, (320, select_arrows_pos.y))
 		return select_arrows_pos, key
 	
 	def select_button(self, x):
-		colide = pygame.Rect.colliderect(x[0], button_quit.button_pos)
-		if colide and x[1] == "K_RETURN":
+		# x[0] -> position of arrows on menu
+		# x[1] -> information about press ENTER/SPACE/ key
+		collide_1btn = pygame.Rect.colliderect(x[0], button_1pl.button_pos)
+		if collide_1btn and x[1] == "K_RETURN":
+			main_game.main_game(1)
+		collide_2btn = pygame.Rect.colliderect(x[0], button_2pl.button_pos)
+		if collide_2btn and x[1] == "K_RETURN":
+			main_game.main_game(2)
+		collide_3btn = pygame.Rect.colliderect(x[0], button_opt.button_pos)
+		if collide_3btn and x[1] == "K_RETURN":
+			self.options.show_options()
+		collide_4btn = pygame.Rect.colliderect(x[0], button_quit.button_pos)
+		if collide_4btn and x[1] == "K_RETURN":
 			pygame.quit()
 			exit()
-		colide = pygame.Rect.colliderect(x[0], button_1pl.button_pos)
-		if colide and x[1] == "K_RETURN":
-			main_game.main_game(1)
-		colide = pygame.Rect.colliderect(x[0], button_2pl.button_pos)
-		if colide and x[1] == "K_RETURN":
-			main_game.main_game(2)
-		colide = pygame.Rect.colliderect(x[0], button_opt.button_pos)
-		if colide and x[1] == "K_RETURN":
-			print('OPTIONS')
+		

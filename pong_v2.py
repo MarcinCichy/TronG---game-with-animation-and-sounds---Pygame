@@ -3,21 +3,17 @@
 """
 
 from main_game import *
+from board import Board
 
+
+title_screen = Board()
 pygame.init()
 
 pygame.display.set_caption('TronG')
-# clock = pygame.time.Clock()
 
-screen.fill(BKG_COLOR)  # ?????
+title_screen.show_title_screen()
+pygame.time.delay(5000)
+num_of_players = menu.show_menu()
+menu.close_menu_window()
+main_game(num_of_players)
 
-
-x = menu.show_menu()
-main_game(x)
-
-pygame.quit()
-exit()
-
-
-
-	

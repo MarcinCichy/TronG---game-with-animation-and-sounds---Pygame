@@ -32,5 +32,6 @@ BUTTON_FONT_COLOR = pygame.Color(112, 178, 225)
 # --------------------------------------------------
 game_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 80)
 button_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 25)
+option_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 20)
 
-MOVE_MENU = 270
+MOVE_POINTER = 270

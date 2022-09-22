@@ -18,7 +18,7 @@ class Button:
 		screen.blit(self.button_img, self.button_pos)
 		screen.blit(self.text, self.text_input_pos)
 		
-	def show_clicked_button(self):
-		screen.blit(self.clicked_button_img, self.button_pos)
-		screen.blit(self.text, self.text_input_pos)
+	# def show_clicked_button(self):
+	# 	screen.blit(self.clicked_button_img, self.button_pos)
+	# 	screen.blit(self.text, self.text_input_pos)
 	

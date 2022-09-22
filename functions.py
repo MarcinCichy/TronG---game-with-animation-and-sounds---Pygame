@@ -80,23 +80,26 @@ def lost_point(disk, background):
 		elif disk.disk_ingame_pos.left <= 0:
 			right_points += 1
 			background.fill_board("board_left")
-		# background.board_static()  # -> check it if is needed
-		# pygame.time.delay(650)
 		disk.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
-		# after lost point, set disk speed at start values
+		# after lost point, set disk speed at start values (reset acceleration to zero)
 		disk.speed_x = DISK_SPEED_X
 		disk.speed_y = DISK_SPEED_Y
+		# and randomly set disk's direction
 		disk.speed_x *= random.choice((1, -1))
 		disk.speed_y *= random.choice((1, -1))
+		# below are variables to store points to show them at the game over screen
+		# because all point should be reset to zero before use menu called by end_game methode
+		left_points_before_end = left_points
+		right_points_before_end = right_points
 		if left_points == END_GAME_POINTS or right_points == END_GAME_POINTS:
-			end_game(background)
 			left_points = 0
 			right_points = 0
-			#return "exit"  #  ???
+			end_game(background, left_points_before_end, right_points_before_end)
+			menu.show_menu()
 		else:
 			pygame.time.delay(800)
 			show_new_disk()
-
+		
 
 def show_points(l_points, r_points):
 	left_points_text = game_font.render(f"{l_points}", False, FONT_COLOR)
@@ -105,15 +108,12 @@ def show_points(l_points, r_points):
 	screen.blit(right_points_text, (490, 70))
 	
 	
-def end_game(backgr):
+def end_game(backgr, l_points, r_points):
 	pygame.time.delay(1000)
 	backgr.board_static()
-	show_points(left_points, right_points)
+	show_points(l_points, r_points)
 	end_game_text = game_font.render("GAME OVER", False, FONT_COLOR)
 	screen.blit(end_game_text, (160, 260))
 	pygame.display.update()
 	pygame.time.delay(3000)  # it is the time to show GAME OVER text
-	menu.show_menu()
-		
-
 

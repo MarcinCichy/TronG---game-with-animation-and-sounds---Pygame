@@ -1,3 +1,5 @@
+import pygame.image
+
 from constants import *
 
 
@@ -7,7 +9,8 @@ class Board:
 		self.bg_img_right = pygame.image.load('pics/bkg_right_wo_fill.png').convert()
 		self.bg_img_left_fill = pygame.image.load('pics/bkg_left_fill_alpha.png').convert_alpha()
 		self.bg_img_right_fill = pygame.image.load('pics/bkg_right_fill_alpha.png').convert_alpha()
-	
+		self.title_bg_img = pygame.image.load('pics/title_background.png').convert()
+		
 	def board_appearance(self):
 		pygame.draw.line(screen, MIDDLE_LINE_COLOR, (SCREEN_HALF_WIDTH, 0), (SCREEN_HALF_WIDTH, SCREEN_HIGHT), width=3)  # middle line
 		half_background_size = pygame.Rect(0, 0, SCREEN_HALF_WIDTH, SCREEN_HIGHT)  # image size is 400x600
@@ -43,3 +46,8 @@ class Board:
 		else:
 			screen.blit(self.bg_img_right_fill, (400, 0))  # right half of background move by right top corner
 		pygame.display.update()  # update display every frame
+
+	def show_title_screen(self):
+		screen.blit(self.title_bg_img, (0, 0))
+	
+		pygame.display.update()

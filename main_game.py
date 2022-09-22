@@ -1,12 +1,9 @@
-from sys import exit
 import functions
-import pygame
+import menu
 from paddles import Paddle
 from disk import Disk
-import menu
 from constants import *
 from board import Board
-
 
 
 background = Board()
@@ -17,6 +14,8 @@ menu = menu.Menu()
 
 
 def main_game(num_players):
+	# menu.close_menu_window()
+	functions.show_new_disk()
 	global PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK
 	game_on = True
 	while game_on:
@@ -44,7 +43,7 @@ def main_game(num_players):
 				if event.key == pygame.K_RALT:
 					RIGHT_PADDLE_STICK_DISK = -1
 					
-		#  below used for two persons
+		#  below used for two players
 			if num_players == 2:
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_z:
@@ -63,22 +62,16 @@ def main_game(num_players):
 				if event.type == pygame.KEYUP:
 					if event.key == pygame.K_LALT:
 						LEFT_PADDLE_STICK_DISK = -1
-			# elif num_players == 1:
-			# 	print("ONE PLAYERS")
-				
-				
 		
 		# ----------------------------- game logic -----------------------------
-		functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK,
-							LEFT_PADDLE_STICK_DISK)
-		
+		functions.collisons(disk, right_paddle, left_paddle, PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK)
 		disk.disk_move()
 		left_paddle.show_paddles()
 		right_paddle.show_paddles()
 		if num_players == 2:
 			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 			left_paddle.paddle_move(PADDLE_SPEED_LEFT)
-		elif num_players == 1:
+		else:  #  num_players == 1 -> human vs computer
 			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 			left_paddle.computer_paddle_move(disk, COMPUTER_PADDLE_SPEED)
 		functions.lost_point(disk, background)

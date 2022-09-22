@@ -17,12 +17,14 @@ class Disk:
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
 		
 	def disk_start(self):
+		# set position of disk at start
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
-		self.disk_appears_anim()
+		self.disk_appears_anim()  # call methode to run animation of disk
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(250)
 		
 	def disk_appears_anim(self):
+		# animation of disk based at image with
 		animation_list = []
 		animation_steps = 12
 		
@@ -44,7 +46,6 @@ class Disk:
 		self.disk_ingame_pos.y += self.speed_y
 		self.static_background.board_static()
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
-		pygame.time.delay(3)
 
 	def disk_after_bounce(self):
 		screen.blit(self.bounced_disk_img, self.disk_ingame_pos)
