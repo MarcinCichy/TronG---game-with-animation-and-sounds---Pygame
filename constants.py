@@ -1,5 +1,21 @@
+import copy
+
 import pygame
 
+# # below are default values of some game parameters
+disk_speed_list = [6]
+computer_speed_list = [8]
+max_points_list = [5]
+chosen_list = [disk_speed_list, computer_speed_list, max_points_list]
+
+
+def check():
+	print(f'list form funct: {chosen_list}')
+	print(f'disk_speed: {chosen_list[0][0]}, {DISK_SPEED_X}')
+	print(f'comp_speed: {chosen_list[1][0]}, {COMPUTER_PADDLE_SPEED}')
+	print((f'max_points:{chosen_list[2][0]}, {END_GAME_POINTS}'))
+#
+#
 pygame.font.init()
 clock = pygame.time.Clock()
 
@@ -8,8 +24,8 @@ SCREEN_WIDTH = 800
 SCREEN_HALF_HIGHT = int(SCREEN_HIGHT/2)
 SCREEN_HALF_WIDTH = int(SCREEN_WIDTH/2)
 # --------------------------------------------------
-DISK_SPEED_X = 4
-DISK_SPEED_Y = 4
+DISK_SPEED_X = 6
+DISK_SPEED_Y = 6
 ACCELERATION = 2
 RIGHT_PADDLE_STICK_DISK = 0
 LEFT_PADDLE_STICK_DISK = 0
@@ -19,7 +35,7 @@ PADDLE_SPEED_LEFT = 0
 COMPUTER_PADDLE_SPEED = 8
 LEFT_POINTS = 0
 RIGHT_POINTS = 0
-END_GAME_POINTS = 2
+END_GAME_POINTS = 5
 # --------------------------------------------------
 ANIMATION_LIST = []
 ANIMATION_STEPS = 12
@@ -35,3 +51,5 @@ button_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 25)
 option_font = pygame.font.Font("fonts/tr2n/Tr2n.ttf", 20)
 
 MOVE_POINTER = 270
+MOVE_CURSOR_X = 475
+MOVE_CURSOR_Y = 275

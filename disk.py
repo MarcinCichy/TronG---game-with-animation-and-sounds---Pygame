@@ -1,6 +1,7 @@
 import spritesheet
 from board import Board
 from constants import *
+import functions
 
 
 class Disk:
@@ -19,6 +20,7 @@ class Disk:
 	def disk_start(self):
 		# set position of disk at start
 		self.disk_ingame_pos.center = (SCREEN_HALF_WIDTH, SCREEN_HALF_HIGHT)
+		functions.play_sound('audios/mixkit-futuristic-metal-transition-sweep-2636.wav')
 		self.disk_appears_anim()  # call methode to run animation of disk
 		screen.blit(self.disk_ingame_img, self.disk_ingame_pos)
 		pygame.time.delay(250)

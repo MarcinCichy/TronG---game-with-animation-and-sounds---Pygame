@@ -1,4 +1,5 @@
 import pygame.image
+import functions
 import main_game
 from sys import exit
 from constants import *
@@ -7,14 +8,14 @@ from buttons import Button
 from options import Options
 
 # set buttons in menu
-button_1pl_img = pygame.image.load('pics/emty_button_1.png').convert_alpha()
+button_1pl_img = pygame.image.load('pics/empty_button_1.png').convert_alpha()
 button_1pl = Button(button_1pl_img, 420, 280, "1 PLAYER")
-button_2pl_img = pygame.image.load('pics/emty_button_1.png').convert_alpha()
+button_2pl_img = pygame.image.load('pics/empty_button_1.png').convert_alpha()
 button_2pl = Button(button_2pl_img, 420, 340, "2 PLAYERS")
-button_opt_img = pygame.image.load('pics/emty_button_1.png').convert_alpha()
+button_opt_img = pygame.image.load('pics/empty_button_1.png').convert_alpha()
 button_opt = Button(button_opt_img, 420, 400, "OPTIONS")
-button_quit_img = pygame.image.load('pics/emty_button_1.png').convert_alpha()
-button_quit = Button(button_quit_img, 420, 460, "QUIT")
+button_quit_img = pygame.image.load('pics/empty_button_1.png').convert_alpha()
+button_quit = Button(button_quit_img, 420, 460, "QUIT")  # 400 -> 460
 
 
 class Menu:
@@ -48,7 +49,6 @@ class Menu:
 			move_arrows = self.switch_between_buttons()
 			self.select_button(move_arrows)
 			pygame.display.update()
-
 		
 	def switch_between_buttons(self):
 		key = None
@@ -57,11 +57,14 @@ class Menu:
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_DOWN:
+					functions.play_sound('audios/mixkit-explainer-video-pops-whoosh-light-pop-3005.wav')
 					self.move_arrows += 60
 				if event.key == pygame.K_UP:
+					functions.play_sound('audios/mixkit-explainer-video-pops-whoosh-light-pop-3005.wav')
 					self.move_arrows -= 60
 				if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
 					key = "K_RETURN"
+					functions.play_sound('audios/mixkit-falling-on-metal-roof-752.wav')
 					
 		select_arrows = button_font.render(">             <", False, FONT_COLOR)
 		select_arrows_pos = select_arrows.get_rect()

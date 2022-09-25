@@ -1,4 +1,7 @@
 import random
+import copy
+
+import options
 from disk import Disk
 from menu import *
 from constants import *
@@ -19,6 +22,7 @@ def show_new_disk():
 # check collision with paddles and check if disk is stick to the paddle
 def collisons(disk, right_paddle, left_paddle, right_paddle_speed, left_paddle_speed, right_paddle_stick, left_paddle_stick):
 	if disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos) or disk.disk_ingame_pos.colliderect(left_paddle.paddle_left_pos):
+		play_sound('audios/mixkit-technology-transition-slide-3120.wav')
 		if right_paddle_stick == 1 and disk.disk_ingame_pos.colliderect(right_paddle.paddle_right_pos):
 			disk.speed_x = 0
 			disk.speed_y = right_paddle_speed
@@ -63,6 +67,7 @@ def collisons(disk, right_paddle, left_paddle, right_paddle_speed, left_paddle_s
 		
 	# Check collision with top and bottom of board
 	if disk.disk_ingame_pos.bottom >= SCREEN_HIGHT or disk.disk_ingame_pos.top <= 0:
+		play_sound('audios/mixkit-sci-fi-sweep-2522.wav')
 		disk.speed_y *= -1
 		disk.disk_after_bounce()
 
@@ -73,6 +78,7 @@ def lost_point(disk, background):
 	global left_points, right_points
 	show_points(left_points, right_points)
 	if disk.disk_ingame_pos.right >= SCREEN_WIDTH or disk.disk_ingame_pos.left <= 0:
+		play_sound('audios/mixkit-swift-sword-strike-2166.wav')
 		if disk.disk_ingame_pos.right >= SCREEN_WIDTH:
 			left_points += 1
 			background.fill_board("board_right")
@@ -91,6 +97,7 @@ def lost_point(disk, background):
 		# because all point should be reset to zero before use menu called by end_game methode
 		left_points_before_end = left_points
 		right_points_before_end = right_points
+		print(END_GAME_POINTS)
 		if left_points == END_GAME_POINTS or right_points == END_GAME_POINTS:
 			left_points = 0
 			right_points = 0
@@ -112,8 +119,14 @@ def end_game(backgr, l_points, r_points):
 	pygame.time.delay(1000)
 	backgr.board_static()
 	show_points(l_points, r_points)
+	play_sound('audios/mixkit-blockbuster-suspense-movie-impact-2915.wav')
 	end_game_text = game_font.render("GAME OVER", False, FONT_COLOR)
 	screen.blit(end_game_text, (160, 260))
 	pygame.display.update()
-	pygame.time.delay(3000)  # it is the time to show GAME OVER text
+	pygame.time.delay(4000)  # it is the time to show GAME OVER text
 
+
+def play_sound(file):
+	sound = pygame.mixer.Sound(file)
+	pygame.mixer.Sound.play(sound)
+	pygame.mixer.music.stop()

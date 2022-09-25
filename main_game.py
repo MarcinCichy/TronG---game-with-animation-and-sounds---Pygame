@@ -5,7 +5,6 @@ from disk import Disk
 from constants import *
 from board import Board
 
-
 background = Board()
 disk = Disk()
 left_paddle = Paddle("left")
@@ -14,12 +13,10 @@ menu = menu.Menu()
 
 
 def main_game(num_players):
-	# menu.close_menu_window()
 	functions.show_new_disk()
 	global PADDLE_SPEED_RIGHT, PADDLE_SPEED_LEFT, RIGHT_PADDLE_STICK_DISK, LEFT_PADDLE_STICK_DISK
 	game_on = True
 	while game_on:
-		
 		# ---------- pygame events to control game and paddles  ----------
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:

@@ -1,5 +1,6 @@
 import pygame.image
 
+import functions
 from constants import *
 
 
@@ -14,6 +15,7 @@ class Board:
 	def board_appearance(self):
 		pygame.draw.line(screen, MIDDLE_LINE_COLOR, (SCREEN_HALF_WIDTH, 0), (SCREEN_HALF_WIDTH, SCREEN_HIGHT), width=3)  # middle line
 		half_background_size = pygame.Rect(0, 0, SCREEN_HALF_WIDTH, SCREEN_HIGHT)  # image size is 400x600
+		functions.play_sound('audios/mixkit-fast-thunder-whoosh-1293.wav')
 		self.board_move(half_background_size)
 
 	def board_move(self, background_size):
@@ -48,6 +50,6 @@ class Board:
 		pygame.display.update()  # update display every frame
 
 	def show_title_screen(self):
+		functions.play_sound('audios/mixkit-futuristic-space-intro-2523.mp3')
 		screen.blit(self.title_bg_img, (0, 0))
-	
 		pygame.display.update()
