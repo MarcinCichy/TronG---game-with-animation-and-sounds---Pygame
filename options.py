@@ -157,7 +157,6 @@ class Options:
 		# x[1] -> information about press ENTER/SPACE/ key
 		collide_setbtn = pygame.Rect.colliderect(x[0], button_set.button_pos)
 		if collide_setbtn and x[1] == "K_RETURN":
-			functions.check()
 			return "Quit"
 		
 		for z in range(len(list_of_values)):

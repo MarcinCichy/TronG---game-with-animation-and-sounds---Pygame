@@ -97,7 +97,6 @@ def lost_point(disk, background):
 		# because all point should be reset to zero before use menu called by end_game methode
 		left_points_before_end = left_points
 		right_points_before_end = right_points
-		print(END_GAME_POINTS)
 		if left_points == END_GAME_POINTS or right_points == END_GAME_POINTS:
 			left_points = 0
 			right_points = 0

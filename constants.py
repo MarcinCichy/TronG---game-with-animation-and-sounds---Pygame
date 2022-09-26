@@ -8,14 +8,6 @@ computer_speed_list = [8]
 max_points_list = [5]
 chosen_list = [disk_speed_list, computer_speed_list, max_points_list]
 
-
-def check():
-	print(f'list form funct: {chosen_list}')
-	print(f'disk_speed: {chosen_list[0][0]}, {DISK_SPEED_X}')
-	print(f'comp_speed: {chosen_list[1][0]}, {COMPUTER_PADDLE_SPEED}')
-	print((f'max_points:{chosen_list[2][0]}, {END_GAME_POINTS}'))
-#
-#
 pygame.font.init()
 clock = pygame.time.Clock()
 
