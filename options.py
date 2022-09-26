@@ -2,6 +2,7 @@ import pygame.image
 import functions
 from board import Board
 from buttons import *
+import main_game
 import constants
 
 # # below are default values of some game parameters
@@ -166,14 +167,14 @@ class Options:
 			if collide and x[1] == "K_RETURN":
 				if list_of_values.index(list_of_values[z]) <= 2:
 					disk_speed_list[0] = chosen_value
-					constants.DISK_SPEED_X = (chosen_list[0][0])
-					constants.DISK_SPEED_Y = (chosen_list[0][0])
+					functions.DISK_SPEED_X = int((chosen_list[0][0]))
+					functions.DISK_SPEED_Y = int((chosen_list[0][0]))
 				elif list_of_values.index(list_of_values[z]) >= 6:
 					max_points_list[0] = chosen_value
-					constants.END_GAME_POINTS = (chosen_list[2][0])
+					functions.END_GAME_POINTS = int((chosen_list[2][0]))
 				else:
 					computer_speed_list[0] = chosen_value
-					constants.COMPUTER_PADDLE_SPEED = (chosen_list[1][0])
+					main_game.COMPUTER_PADDLE_SPEED = int((chosen_list[1][0]))
 
 	def show_chosen_value(self, lv):
 		selected_cursor_color = (190, 38, 51)
