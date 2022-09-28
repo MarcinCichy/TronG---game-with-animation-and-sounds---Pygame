@@ -3,6 +3,7 @@ from disk import Disk
 from menu import *
 from constants import *
 
+
 left_points = LEFT_POINTS
 right_points = RIGHT_POINTS
 menu = Menu()
@@ -10,6 +11,10 @@ menu = Menu()
 
 # set a new disk
 def show_new_disk():
+	#  The two lines below place the paddles in their starting positions (left and right center of the screen)
+	#  after each point lost and the start of a new turn
+	main_game.left_paddle.paddle_left_pos.center = (SCREEN_WIDTH - SCREEN_WIDTH + 15, SCREEN_HALF_HIGHT)
+	main_game.right_paddle.paddle_right_pos.center = (SCREEN_WIDTH - 15, SCREEN_HALF_HIGHT)
 	start_game_board = Board()
 	start_game_board.board_appearance()
 	renew_disk = Disk()
