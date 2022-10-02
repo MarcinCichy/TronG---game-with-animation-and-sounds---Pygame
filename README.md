@@ -12,7 +12,7 @@ The second attraction of the game is that the disc can be bounced in the directi
 
 In the game I use:
  - sounds from https://mixkit.co/free-sound-effects/
-- fonts written by Jeff Bell (www.randombell.com)
-- Python sprite sheet script from https://github.com/russs123/pygame_tutorials/blob/main/sprite_tutorial/spritesheet.py
+ - fonts created by Jeff Bell (www.randombell.com)
+ - Python spritesheet script from https://github.com/russs123/pygame_tutorials/blob/main/sprite_tutorial/spritesheet.py
 
 Have a fun
