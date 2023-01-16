@@ -124,10 +124,13 @@ def end_game(backgr, l_points, r_points):
 	end_game_text = game_font.render("GAME OVER", False, FONT_COLOR)
 	screen.blit(end_game_text, (160, 260))
 	pygame.display.update()
-	# Those two lines below are needed to fix issue with locked paddle at top or down on screen after
+	# Those foyr lines below are needed to fix issue with locked paddle at top or down on screen after
 	# few starts the game - its works
+	# It's also needed to fix self stick disk to paddle (sometimes)
 	main_game.PADDLE_SPEED_RIGHT = 0
 	main_game.PADDLE_SPEED_LEFT = 0
+	main_game.RIGHT_PADDLE_STICK_DISK = 0
+	main_game.LEFT_PADDLE_STICK_DISK = 0
 	pygame.time.delay(4000)  # it is the time to show GAME OVER text
 
 
