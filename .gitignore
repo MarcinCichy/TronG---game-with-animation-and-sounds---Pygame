@@ -2,5 +2,6 @@
 /pong_main.py
 /test.py
 /test_lista.py
-
+__pycache__/
+*.pyc
 
