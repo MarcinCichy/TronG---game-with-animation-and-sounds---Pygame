@@ -68,7 +68,7 @@ def main_game(num_players):
 		if num_players == 2:
 			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 			left_paddle.paddle_move(PADDLE_SPEED_LEFT)
-		else:  #  num_players == 1 -> human vs computer
+		else:  # num_players == 1 -> human vs computer
 			right_paddle.paddle_move(PADDLE_SPEED_RIGHT)
 			left_paddle.computer_paddle_move(disk, COMPUTER_PADDLE_SPEED)
 		functions.lost_point(disk, background)
